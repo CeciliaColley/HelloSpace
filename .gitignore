@@ -1,0 +1,48 @@
+# Build Folders
+Debug/
+Release/
+x64/
+x86/
+
+# Visual Studio Files
+.vscode/
+.vs/
+*.user
+*.suo
+*.log
+*.tlog
+*.obj
+*.pch
+*.idb
+*.pdb
+*.opendb
+*.VC.db
+
+# Generated Files
+*.exe
+*.dll
+*.lib
+*.ilk
+*.exp
+
+# Temporary Files
+*.tmp
+*.cache
+*.log
+
+# Other
+*.ipch
+*.iobj
+*.ipdb
+
+# Backup Files
+*.bak
+*.old
+*.sdf
+
+# By-products of Testing
+*.coverage
+*.testlog
+
+# Exclude Git itself
+.git/
