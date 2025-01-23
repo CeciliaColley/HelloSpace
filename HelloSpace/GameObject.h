@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 #include "vector"
 #include "vector2.h"
 

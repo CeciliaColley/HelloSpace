@@ -14,14 +14,14 @@ public:
 	~Gun();
 
 	// TODO: Get rid of some of these if other classes shouldnt be able to modify them.
-	int GetCooldownTimer();
-	int GetCooldownThreshold();
-	int GetShootCount();
-	bool CanShoot();
+	//int GetCooldownTimer();
+	//int GetCooldownThreshold();
+	//int GetShootCount();
+	//bool CanShoot();
 
-	void IncreaseCooldownTimer(int increase);
-	void SetCooldownThreshold(int threshold);
-	void SetCanShoot(bool canShoot);
+	//void IncreaseCooldownTimer(int increase);
+	//void SetCooldownThreshold(int threshold);
+	//void SetCanShoot(bool canShoot);
 
 	void GenerateBullet(vector2 shooterPosition, int offset, directions direction);
 	void Shoot(vector2 shooterPosition, int offset, directions direction);

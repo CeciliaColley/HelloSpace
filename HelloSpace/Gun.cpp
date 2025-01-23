@@ -14,35 +14,35 @@ Gun::~Gun()
 }
 
 // TODO: THESE FUNCTIONS ARENT BEING USED, ARE THEY NECESSARY
-int Gun::GetCooldownTimer()
-{
-	return cooldownTimer;
-}
-int Gun::GetCooldownThreshold()
-{
-	return cooldownThreshold;
-}
-int Gun::GetShootCount()
-{
-	return shootCount;
-}
-bool Gun::CanShoot()
-{
-	return canShoot;
-}
-void Gun::IncreaseCooldownTimer(int increase)
-{
-	cooldownTimer += increase;
-}
-void Gun::SetCooldownThreshold(int threshold)
-{
-	cooldownThreshold = threshold;
-	cooldownTimer = cooldownThreshold;
-}
-void Gun::SetCanShoot(bool canShoot)
-{
-	this->canShoot = canShoot;
-}
+//int Gun::GetCooldownTimer()
+//{
+//	return cooldownTimer;
+//}
+//int Gun::GetCooldownThreshold()
+//{
+//	return cooldownThreshold;
+//}
+//int Gun::GetShootCount()
+//{
+//	return shootCount;
+//}
+//bool Gun::CanShoot()
+//{
+//	return canShoot;
+//}
+//void Gun::IncreaseCooldownTimer(int increase)
+//{
+//	cooldownTimer += increase;
+//}
+//void Gun::SetCooldownThreshold(int threshold)
+//{
+//	cooldownThreshold = threshold;
+//	cooldownTimer = cooldownThreshold;
+//}
+//void Gun::SetCanShoot(bool canShoot)
+//{
+//	this->canShoot = canShoot;
+//}
 //Functions being used
 void Gun::GenerateBullet(vector2 shooterPosition, int offset, directions direction)
 {
