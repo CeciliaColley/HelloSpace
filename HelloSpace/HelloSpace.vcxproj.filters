@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Movement">
       <UniqueIdentifier>{c69fb455-98b3-4e09-a7bd-d04402d8b608}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game Managers">
+      <UniqueIdentifier>{7fd4ecc1-2780-4b68-aac2-35c21f74883e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vector2.h">

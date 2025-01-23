@@ -5,12 +5,13 @@
 
 
 using namespace std;
-
+vector<GameObject*> GameObject::activeGameObjects;
 /************************************************************** CONSTRUCTORS AND DECONSTRUCTORS ******************************************************/
 GameObject::GameObject()
 {
 	position = vectorOne;
 	size = vectorZero;
+	activeGameObjects.push_back(this);
 }
 GameObject::GameObject(vector2 position)
 {
@@ -22,6 +23,8 @@ GameObject::GameObject(vector2 position)
 	{
 		cerr << e.what() << endl;
 	}
+	size = vectorZero;
+	activeGameObjects.push_back(this);
 }
 GameObject::~GameObject() = default;
 
@@ -34,7 +37,10 @@ vector2 GameObject::GetSize()
 {
 	return size;
 }
-
+vector<GameObject*> GameObject::GetActiveGameObjects()
+{
+	return activeGameObjects;
+}
 /********************************************************************** SETTERS ************************************************************************/
 void GameObject::SetPosition(vector2 position)
 {

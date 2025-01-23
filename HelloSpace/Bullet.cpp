@@ -4,10 +4,12 @@
 Bullet::Bullet() : GameObject()
 {
 	SetSize(vectorOne);
+	predefinedMovement.DefineMovement(Movement::UP);
 }
-Bullet::Bullet(vector2 position) : GameObject(position)
+Bullet::Bullet(vector2 position, Movement::directions movementDirection) : GameObject(position)
 {
 	SetSize(vectorOne);
+	predefinedMovement.DefineMovement(movementDirection);
 }
 Bullet::~Bullet()
 {
@@ -15,7 +17,9 @@ Bullet::~Bullet()
 }
 void Bullet::Draw()
 {
-	goToCoordinates(position.x, position.y);
+	int x = GetPosition().x;
+	int y = GetPosition().y;
+	goToCoordinates(x, y);
 	wcout << L"⌂";
 }
 void Bullet::Move()
@@ -25,10 +29,5 @@ void Bullet::Move()
 	{
 		SetPosition(newPosition);
 	}
-	catch (const invalid_argument& e)
-	{
-		cerr << e.what << endl;
-	}
-
-	
+	catch (const invalid_argument& e) {}
 }

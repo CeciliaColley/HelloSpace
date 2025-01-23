@@ -5,10 +5,10 @@
 class Bullet : public GameObject
 {
 private:
-PredefinedMovement predefinedMovement;
+	PredefinedMovement predefinedMovement;
 public:
 	Bullet();
-	Bullet(vector2 position);
+	Bullet(vector2 position, Movement::directions movementDirection);
 	~Bullet();
 
 	void Draw() override;

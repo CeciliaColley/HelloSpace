@@ -30,7 +30,24 @@ bool Movement::IsDirectionAllowed(directions direction)
 {
 	return permittedMovementDirections[direction];
 }
-vector2 DirectionToVector(directions direction)
+vector2 Movement::DirectionToVector(directions direction)
 {
-
+	switch (direction)
+	{
+	case UP:
+		return vectorUp;
+		break;
+	case DOWN:
+		return vectorDown;
+		break;
+	case LEFT:
+		return vectorLeft;
+		break;
+	case RIGHT:
+		return vectorRight;
+		break;
+	default:
+		return vectorZero;
+		break;
+	}
 }

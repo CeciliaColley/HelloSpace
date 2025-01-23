@@ -6,6 +6,21 @@
 
 using namespace std;
 
+void DrawAllActiveGameObjects()
+{
+	for (GameObject* gameObject : GameObject::GetActiveGameObjects())
+	{
+		gameObject->Draw();
+	}
+}
+
+void MoveAllActiveGameObjects()
+{
+	for (GameObject* gameObject : GameObject::GetActiveGameObjects())
+	{
+		gameObject->Move();
+	}
+}
 
 int main()
 {
@@ -13,20 +28,22 @@ int main()
 
 	Spaceship spaceship;
 	spaceship.SetPosition(vector2(10, 10));
-	spaceship.Draw();
-
-	Bullet bullet = Bullet(vector2(5, 20));
 
 	int frames = 1000000000;
 	int frame = 0;
 
 	while (frame < frames)
 	{
-		spaceship.Move();
-		bullet.Move();
+		MoveAllActiveGameObjects();
+
+		if (GetKeyState(0x20) < 0)
+		{
+			spaceship.Shoot();
+		}
+
 		system("cls");
-		spaceship.Draw();
-		bullet.Draw();
+		DrawAllActiveGameObjects();
+		
 		frame++;
 		Sleep(1);
 	}

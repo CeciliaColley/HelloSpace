@@ -1,14 +1,16 @@
 #pragma once
 #include <iostream>
+#include "vector"
 #include "vector2.h"
 
 using namespace std;
 
 class GameObject
 {
-protected:
+private:
 	vector2 position;
 	vector2 size;
+	static vector<GameObject*> activeGameObjects;
 public:
 	GameObject();
 	GameObject(vector2 position);
@@ -17,6 +19,7 @@ public:
 	// Getters
 	vector2 GetPosition();
 	vector2 GetSize();
+	static vector<GameObject*> GetActiveGameObjects();
 
 	// Setters
 	void SetPosition(vector2 position);

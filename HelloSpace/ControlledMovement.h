@@ -5,17 +5,16 @@ class ControlledMovement : public Movement
 {
 private:
 	/// <summary>
-	/// <para> Checks which Arrow key is pressed and if the direction is permisable. </para>
-	/// <para> Defaults to a vector 0 if the Arrow key that is pressed isn't allowed. </para>
+	/// <para> Checks which Arrow key is pressed and returns the corresponding direction. </para>
 	/// </summary>
-	vector2 InputToVector();
+	directions InputToDirection();
 
 public:
 	ControlledMovement();
 	~ControlledMovement();
 	
 	/// <summary>
-	/// <para> Uses the InputToVector function to set the movementVector member variable. </para>
+	/// <para> Uses the InputToDirection function to validate the direction and set the movementVector member variable. </para>
 	/// </summary>
-	void CaptureInput();
+	void ControlMovement();
 };

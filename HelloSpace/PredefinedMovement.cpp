@@ -5,11 +5,11 @@ PredefinedMovement::PredefinedMovement() : Movement()
 
 }
 PredefinedMovement::~PredefinedMovement() = default;
-void PredefinedMovement::DefineContinuousMovement(directions direction)
+void PredefinedMovement::DefineMovement(directions direction)
 {
     if (IsDirectionAllowed(direction))
     {
-        SetMovementVector(direction)
+        SetMovementVector(DirectionToVector(direction));
     }
     else
     {

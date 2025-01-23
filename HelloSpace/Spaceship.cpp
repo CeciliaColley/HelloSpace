@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "Spaceship.h"
 #include "AwesomeLibrary.h"
+#include "Bullet.h"
 
 using namespace std;
 
@@ -13,18 +14,27 @@ Spaceship::Spaceship() : GameObject()
 }
 Spaceship::~Spaceship() = default;
 /************************************************************************* OVERRIDEN METHODS ************************************************************/
+void Spaceship::Shoot()
+{
+	int bulletSpawnX = GetPosition().x + (GetSize().x / 2);
+	int bulletSpawnY = GetPosition().y + 1;
+	vector2 bulletSpawnPoint = vector2(bulletSpawnX, bulletSpawnY);
+	Bullet* bullet = new Bullet(bulletSpawnPoint, Movement::UP);
+}
 void Spaceship::Draw()
 {
-	goToCoordinates(position.x, position.y);
+	int x = GetPosition().x;
+	int y = GetPosition().y;
+	goToCoordinates(x, y);
 	wcout << L"  ▲";
-	goToCoordinates(position.x, (position.y + 1));
+	goToCoordinates(x, (y + 1));
 	wcout << L" (╬)";
-	goToCoordinates(position.x, (position.y + 2));
+	goToCoordinates(x, (y + 2));
 	wcout << L"▲╝ ╚▲";
 }
 void Spaceship::Move()
 {
-	controlledMovement.CaptureInput();
+	controlledMovement.ControlMovement();
 	vector2 newPosition = GetPosition() + controlledMovement.GetMovementVector();
 	try
 	{

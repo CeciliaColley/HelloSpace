@@ -7,32 +7,38 @@ using namespace std;
 ControlledMovement::ControlledMovement() : Movement() {};
 ControlledMovement::~ControlledMovement() = default;
 
-vector2 ControlledMovement::InputToVector()
+Movement::directions ControlledMovement::InputToDirection()
 {
 	// GetKeyState is a function of WinUser.h, which is included by the AwesomeLibrary.h when it includes windows.h
+	// NOTE: Due to the use of else if diagonal movement is not currently possible.
 
-	if (IsDirectionAllowed(UP) && GetKeyState(0x26) < 0) // Up Arrow
+	if (GetKeyState(0x26) < 0) // Up Arrow
 	{
-		return vectorUp;
+		return UP;
 	}
-	else if (IsDirectionAllowed(DOWN) && GetKeyState(0x28) < 0) // Down Arrow
+	else if (GetKeyState(0x28) < 0) // Down Arrow
 	{
-		return vectorDown;
+		return DOWN;
 	}
-	else if (IsDirectionAllowed(LEFT) && GetKeyState(0x25) < 0) // Left Arrow
+	else if (GetKeyState(0x25) < 0) // Left Arrow
 	{
-		return vectorLeft;
+		return LEFT;
 	}
-	else if (IsDirectionAllowed(RIGHT) && GetKeyState(0x27) < 0) // Right Arrow
+	else if (GetKeyState(0x27) < 0) // Right Arrow
 	{
-		return vectorRight;
+		return RIGHT;
 	}
-	else // default to a vector zero.
+	else // default to no direction
 	{
-		return vectorZero;
+		return LAST;
 	}
 }
-void ControlledMovement::CaptureInput()
+void ControlledMovement::ControlMovement()
 {
-	SetMovementVector(InputToVector());
+	directions inputDirection = InputToDirection();
+	if (IsDirectionAllowed(inputDirection))
+	{
+		vector2 inputVector = DirectionToVector(inputDirection);
+		SetMovementVector(inputVector);
+	}
 }

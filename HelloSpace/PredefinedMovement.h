@@ -10,5 +10,5 @@ public:
 	PredefinedMovement();
 	~PredefinedMovement();
 
-	void DefineContinuousMovement(directions direction);
+	void DefineMovement(directions direction);
 };
