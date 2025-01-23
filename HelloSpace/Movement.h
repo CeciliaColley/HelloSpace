@@ -17,6 +17,7 @@ protected:
 	// Protected functions that each movement type can use for it's given movement
 	void SetMovementVector(vector2 movementVector);
 	bool IsDirectionAllowed(directions direction);
+	vector2 DirectionToVector(directions direction);
 
 private:
 	// Private variables specific to the movement object.

@@ -20,12 +20,15 @@ void Bullet::Draw()
 }
 void Bullet::Move()
 {
+	vector2 newPosition = GetPosition() + predefinedMovement.GetMovementVector();
 	try
 	{
-		SetPosition(position += vectorUp);
+		SetPosition(newPosition);
 	}
 	catch (const invalid_argument& e)
 	{
-		
+		cerr << e.what << endl;
 	}
+
+	
 }

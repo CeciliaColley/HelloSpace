@@ -30,3 +30,7 @@ bool Movement::IsDirectionAllowed(directions direction)
 {
 	return permittedMovementDirections[direction];
 }
+vector2 DirectionToVector(directions direction)
+{
+
+}
