@@ -2,6 +2,7 @@
 #include <string>
 #include "GameObject.h"
 #include "ControlledMovement.h"
+#include "Gun.h"
 
 using namespace std;
 
@@ -9,10 +10,13 @@ class Spaceship : public GameObject
 {
 private:
 	ControlledMovement controlledMovement;
+	Gun* gun;
 public:
 	Spaceship();
 	~Spaceship();
 
+	Gun* GetGun();
+	void SetGun(Gun* gun);
 	void Shoot();
 
 	void Draw() override;

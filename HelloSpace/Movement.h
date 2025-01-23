@@ -1,11 +1,10 @@
 #pragma once
 #include "vector2.h"
+#include "Directions.h"
 
 class Movement
 {
 public:
-	enum directions {UP, DOWN, LEFT, RIGHT,	LAST};
-
 	// Public functions that the owners of the movement can use
 	void SetDirectionAllowed(directions direction, bool permision);
 	vector2 GetMovementVector();

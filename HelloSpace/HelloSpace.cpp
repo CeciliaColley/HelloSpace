@@ -3,6 +3,7 @@
 #include "Bullet.h"
 #include "AwesomeLibrary.h"
 #include "vector2.h"
+#include "HelloSpace.h"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ int main()
 
 	int frames = 1000000000;
 	int frame = 0;
+	int loopIncrease = 1;
 
 	while (frame < frames)
 	{
@@ -45,6 +47,8 @@ int main()
 		DrawAllActiveGameObjects();
 		
 		frame++;
-		Sleep(1);
+		Sleep(loopIncrease);
+		spaceship.GetGun()->Cooldown(loopIncrease);
 	}
 }
+

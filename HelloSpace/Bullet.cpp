@@ -4,9 +4,9 @@
 Bullet::Bullet() : GameObject()
 {
 	SetSize(vectorOne);
-	predefinedMovement.DefineMovement(Movement::UP);
+	predefinedMovement.DefineMovement(UP);
 }
-Bullet::Bullet(vector2 position, Movement::directions movementDirection) : GameObject(position)
+Bullet::Bullet(vector2 position, directions movementDirection) : GameObject(position)
 {
 	SetSize(vectorOne);
 	predefinedMovement.DefineMovement(movementDirection);

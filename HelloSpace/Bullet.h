@@ -8,7 +8,7 @@ private:
 	PredefinedMovement predefinedMovement;
 public:
 	Bullet();
-	Bullet(vector2 position, Movement::directions movementDirection);
+	Bullet(vector2 position, directions movementDirection);
 	~Bullet();
 
 	void Draw() override;

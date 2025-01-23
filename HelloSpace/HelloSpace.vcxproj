@@ -130,7 +130,10 @@
     <ClInclude Include="AwesomeLibrary.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="ControlledMovement.h" />
+    <ClInclude Include="Directions.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Gun.h" />
+    <ClInclude Include="HelloSpace.h" />
     <ClInclude Include="Movement.h" />
     <ClInclude Include="PredefinedMovement.h" />
     <ClInclude Include="Spaceship.h" />
@@ -142,6 +145,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="ControlledMovement.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Gun.cpp" />
     <ClCompile Include="HelloSpace.cpp" />
     <ClCompile Include="Movement.cpp" />
     <ClCompile Include="PredefinedMovement.cpp" />

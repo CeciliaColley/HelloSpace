@@ -7,7 +7,7 @@ using namespace std;
 ControlledMovement::ControlledMovement() : Movement() {};
 ControlledMovement::~ControlledMovement() = default;
 
-Movement::directions ControlledMovement::InputToDirection()
+directions ControlledMovement::InputToDirection()
 {
 	// GetKeyState is a function of WinUser.h, which is included by the AwesomeLibrary.h when it includes windows.h
 	// NOTE: Due to the use of else if diagonal movement is not currently possible.
@@ -40,5 +40,9 @@ void ControlledMovement::ControlMovement()
 	{
 		vector2 inputVector = DirectionToVector(inputDirection);
 		SetMovementVector(inputVector);
+	}
+	else
+	{
+		SetMovementVector(vectorZero);
 	}
 }
