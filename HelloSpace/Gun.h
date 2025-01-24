@@ -1,6 +1,8 @@
 #pragma once
+#include "queue"
 #include "vector2.h"
 #include "Directions.h"
+#include "Bullet.h"
 
 class Gun
 {
@@ -9,6 +11,8 @@ private:
 	int cooldownThreshold;
 	int shootCount;
 	bool canShoot;
+	int bulletPoolSize;
+	vector<Bullet*> bulletPool;
 public:
 	Gun();
 	~Gun();
@@ -23,7 +27,9 @@ public:
 	//void SetCooldownThreshold(int threshold);
 	//void SetCanShoot(bool canShoot);
 
-	void GenerateBullet(vector2 shooterPosition, int offset, directions direction);
+	void GenerateBullet(vector2 muzzlePosition, directions direction);
 	void Shoot(vector2 shooterPosition, int offset, directions direction);
+	bool UseBulletPool(vector2 muzzlePosition);
 	void Cooldown(int cooldownFactor);
+	vector2 GetMuzzlePosition(vector2 shooterPosition, int offset);
 };

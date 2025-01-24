@@ -28,17 +28,17 @@
     <Filter Include="Header Files\Game Managers">
       <UniqueIdentifier>{7fd4ecc1-2780-4b68-aac2-35c21f74883e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game Object Components">
+    <Filter Include="Source Files\Game Objects\Game Object Components">
+      <UniqueIdentifier>{849e1ea1-6920-4731-a826-8c4d966bb8a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Objects\Game Object Components">
       <UniqueIdentifier>{0ed9166f-47ad-485c-8852-3b050fb263a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game Object Components">
-      <UniqueIdentifier>{849e1ea1-6920-4731-a826-8c4d966bb8a8}</UniqueIdentifier>
+    <Filter Include="Header Files\Aditional Data Types">
+      <UniqueIdentifier>{ba9c8d20-c6a5-4ada-8fb7-5e8435ef6ef3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AwesomeLibrary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -64,13 +64,13 @@
       <Filter>Header Files\Movement</Filter>
     </ClInclude>
     <ClInclude Include="Gun.h">
-      <Filter>Header Files\Game Object Components</Filter>
+      <Filter>Header Files\Game Objects\Game Object Components</Filter>
     </ClInclude>
     <ClInclude Include="Directions.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Aditional Data Types</Filter>
     </ClInclude>
-    <ClInclude Include="HelloSpace.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="vector2.h">
+      <Filter>Header Files\Aditional Data Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,7 +102,7 @@
       <Filter>Source Files\Movement</Filter>
     </ClCompile>
     <ClCompile Include="Gun.cpp">
-      <Filter>Source Files\Game Object Components</Filter>
+      <Filter>Source Files\Game Objects\Game Object Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

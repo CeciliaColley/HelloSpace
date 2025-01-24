@@ -3,7 +3,6 @@
 #include "Bullet.h"
 #include "AwesomeLibrary.h"
 #include "vector2.h"
-#include "HelloSpace.h"
 
 using namespace std;
 
@@ -20,6 +19,21 @@ void MoveAllActiveGameObjects()
 	for (GameObject* gameObject : GameObject::GetActiveGameObjects())
 	{
 		gameObject->Move();
+	}
+}
+
+void DestroyInactiveGameObjects(bool includePool)
+{
+	for (GameObject* gameObject : GameObject::GetInactiveGameObjects())
+	{
+		if (includePool)
+		{
+			delete gameObject;
+		}
+		else
+		{
+			if (!(gameObject->IsPooled())) { delete gameObject; }
+		}
 	}
 }
 
@@ -45,6 +59,7 @@ int main()
 
 		system("cls");
 		DrawAllActiveGameObjects();
+		DestroyInactiveGameObjects(false);
 		
 		frame++;
 		Sleep(loopIncrease);

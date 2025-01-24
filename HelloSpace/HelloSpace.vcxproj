@@ -133,7 +133,6 @@
     <ClInclude Include="Directions.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gun.h" />
-    <ClInclude Include="HelloSpace.h" />
     <ClInclude Include="Movement.h" />
     <ClInclude Include="PredefinedMovement.h" />
     <ClInclude Include="Spaceship.h" />

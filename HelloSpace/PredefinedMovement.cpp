@@ -1,9 +1,6 @@
 #include "PredefinedMovement.h"
 
-PredefinedMovement::PredefinedMovement() : Movement()
-{
-
-}
+PredefinedMovement::PredefinedMovement() : Movement() { }
 PredefinedMovement::~PredefinedMovement() = default;
 void PredefinedMovement::DefineMovement(directions direction)
 {

@@ -13,7 +13,7 @@ Bullet::Bullet(vector2 position, directions movementDirection) : GameObject(posi
 }
 Bullet::~Bullet()
 {
-	Hide();
+	//Hide();
 }
 void Bullet::Draw()
 {
@@ -29,5 +29,8 @@ void Bullet::Move()
 	{
 		SetPosition(newPosition);
 	}
-	catch (const invalid_argument& e) {}
+	catch (const invalid_argument& e) 
+	{
+		SetActiveState(false);
+	}
 }
