@@ -3,53 +3,38 @@
 
 
 using namespace std;
-
-// NOTE: The cleanup system relies on the active and inactive game objects vectors being accurate. A game object must always exist in one of them.
-vector<GameObject*> GameObject::activeGameObjects;
-vector<GameObject*> GameObject::inactiveGameObjects;
+vector<GameObject*> GameObject::gameObjects;
 /************************************************************** CONSTRUCTORS AND DECONSTRUCTORS ******************************************************/
 GameObject::GameObject()
 {
 	position = vectorOne;
 	size = vectorZero;
 	isActive = true;
-	activeGameObjects.push_back(this);
-	isPooled = false;
+	isGarbage = false;
+	gameObjects.push_back(this);
 }
 GameObject::GameObject(vector2 position)
 {
 	size = vectorZero;
+	isGarbage = false;
 	try
 	{
 		SetPosition(position);
-		SetActiveState(true);
+		isActive = true;
 	}
 	catch (const invalid_argument& e)
 	{
-		SetActiveState(false);
+		isActive = false;
 		cerr << e.what() << endl;
 	}
-	isPooled = false;
+	gameObjects.push_back(this);
 }
 GameObject::~GameObject()
 {
-	if (isActive)
+	auto it = find(gameObjects.begin(), gameObjects.end(), this);
+	if (it != gameObjects.end())
 	{
-		/*auto it = find(activeGameObjects.begin(), activeGameObjects.end(), this);
-		if (it != activeGameObjects.end())
-		{
-			activeGameObjects.erase(it);
-		}*/
-		FindAndErase(activeGameObjects, this);
-	}
-	else
-	{
-		/*auto it = find(inactiveGameObjects.begin(), inactiveGameObjects.end(), this);
-		if (it != inactiveGameObjects.end())
-		{
-			inactiveGameObjects.erase(it);
-		}*/
-		FindAndErase(inactiveGameObjects, this);
+		gameObjects.erase(it);
 	}
 }
 
@@ -62,21 +47,17 @@ vector2 GameObject::GetSize()
 {
 	return size;
 }
-vector<GameObject*> GameObject::GetActiveGameObjects()
+vector<GameObject*> GameObject::GetAllGameObjects()
 {
-	return activeGameObjects;
-}
-vector<GameObject*> GameObject::GetInactiveGameObjects()
-{
-	return inactiveGameObjects;
+	return gameObjects;
 }
 bool GameObject::IsActive()
 {
 	return isActive;
 }
-bool GameObject::IsPooled()
+bool GameObject::IsGarbage()
 {
-	return isPooled;
+	return isGarbage;
 }
 /********************************************************************** SETTERS ************************************************************************/
 void GameObject::SetPosition(vector2 position)
@@ -91,38 +72,9 @@ void GameObject::SetSize(vector2 size)
 {
 	this->size = size;
 }
-void GameObject::SetActiveState(bool activeState)
+void GameObject::SetActiveState(bool isActive)
 {
-	// Only change status if it's a different status. This avoids multiple inclusions in the active / inactive game object vectors
-	if (activeState == isActive) { return;	}
-	else { isActive = activeState; }
-	
-	// If the active status indeed changed, switch it out of the respective tracking vectors
-	// NOTE: The cleanup system relies on the active and inactive game objects vectors being accurate. A game object must always exist in one of them.
-	if (isActive)
-	{
-		activeGameObjects.push_back(this);
-		/*auto it = find(inactiveGameObjects.begin(), inactiveGameObjects.end(), this);
-		if (it != inactiveGameObjects.end())
-		{
-			inactiveGameObjects.erase(it);
-		}*/
-		FindAndErase(inactiveGameObjects, this);
-	}
-	else
-	{
-		inactiveGameObjects.push_back(this);
-		/*auto it = find(activeGameObjects.begin(), activeGameObjects.end(), this);
-		if (it != activeGameObjects.end())
-		{
-			activeGameObjects.erase(it);
-		}*/
-		FindAndErase(activeGameObjects, this);
-	}
-}
-void GameObject::SetIsPooled(bool isPooled)
-{
-	this->isPooled = isPooled;
+	this->isActive = isActive;
 }
 /****************************************************************** CLASS FUNCTIONS ********************************************************************/
 //void GameObject::Hide()
@@ -149,11 +101,7 @@ bool GameObject::Collided(vector2 otherPosition, vector2 otherSize)
 	}
 	else return false;
 }
-void GameObject::FindAndErase(vector<GameObject*> &theVector, GameObject* gameObject)
+void GameObject::FlagForCleanup()
 {
-	auto it = find(theVector.begin(), theVector.end(), gameObject);
-	if (it != theVector.end())
-	{
-		theVector.erase(it);
-	}
+	isGarbage = true;
 }

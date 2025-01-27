@@ -37,6 +37,9 @@
     <Filter Include="Header Files\Aditional Data Types">
       <UniqueIdentifier>{ba9c8d20-c6a5-4ada-8fb7-5e8435ef6ef3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game Managers">
+      <UniqueIdentifier>{9479ef17-d0f7-4840-b292-684c8e3e2413}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AwesomeLibrary.h">
@@ -72,6 +75,9 @@
     <ClInclude Include="vector2.h">
       <Filter>Header Files\Aditional Data Types</Filter>
     </ClInclude>
+    <ClInclude Include="GarbageCollector.h">
+      <Filter>Header Files\Game Managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AwesomeLibrary.cpp">
@@ -103,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="Gun.cpp">
       <Filter>Source Files\Game Objects\Game Object Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GarbageCollector.cpp">
+      <Filter>Source Files\Game Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

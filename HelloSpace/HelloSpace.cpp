@@ -3,36 +3,29 @@
 #include "Bullet.h"
 #include "AwesomeLibrary.h"
 #include "vector2.h"
+#include <crtdbg.h>
+#include "GarbageCollector.h"
 
 using namespace std;
 
 void DrawAllActiveGameObjects()
 {
-	for (GameObject* gameObject : GameObject::GetActiveGameObjects())
+	for (GameObject* gameObject : GameObject::GetAllGameObjects())
 	{
-		gameObject->Draw();
+		if (gameObject->IsActive())
+		{
+			gameObject->Draw();
+		}
 	}
 }
 
 void MoveAllActiveGameObjects()
 {
-	for (GameObject* gameObject : GameObject::GetActiveGameObjects())
+	for (GameObject* gameObject : GameObject::GetAllGameObjects())
 	{
-		gameObject->Move();
-	}
-}
-
-void DestroyInactiveGameObjects(bool includePool)
-{
-	for (GameObject* gameObject : GameObject::GetInactiveGameObjects())
-	{
-		if (includePool)
+		if (gameObject->IsActive())
 		{
-			delete gameObject;
-		}
-		else
-		{
-			if (!(gameObject->IsPooled())) { delete gameObject; }
+			gameObject->Move();
 		}
 	}
 }
@@ -41,6 +34,7 @@ int main()
 {
 	locale::global(locale("en_US.UTF-8")); // I have a whole video on what this line is and why I wrote it. Feel free to share it with future students.
 
+	GarbageCollector garbageCollector;
 	Spaceship spaceship;
 	spaceship.SetPosition(vector2(10, 10));
 
@@ -59,11 +53,18 @@ int main()
 
 		system("cls");
 		DrawAllActiveGameObjects();
-		DestroyInactiveGameObjects(false);
 		
 		frame++;
 		Sleep(loopIncrease);
 		spaceship.GetGun()->Cooldown(loopIncrease);
+		
+		garbageCollector.CollectInactiveGameObjects();
+
+		if (GetKeyState('X') < 0)
+		{
+
+			break;
+		}
 	}
 }
 

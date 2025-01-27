@@ -25,11 +25,11 @@ void Bullet::Draw()
 void Bullet::Move()
 {
 	vector2 newPosition = GetPosition() + predefinedMovement.GetMovementVector();
-	try
+	if (!(newPosition.x <= 0 || newPosition.y <= 0))
 	{
 		SetPosition(newPosition);
 	}
-	catch (const invalid_argument& e) 
+	else
 	{
 		SetActiveState(false);
 	}

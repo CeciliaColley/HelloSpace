@@ -11,7 +11,6 @@ private:
 	int cooldownThreshold;
 	int shootCount;
 	bool canShoot;
-	int bulletPoolSize;
 	vector<Bullet*> bulletPool;
 public:
 	Gun();
@@ -28,6 +27,7 @@ public:
 	//void SetCanShoot(bool canShoot);
 
 	void GenerateBullet(vector2 muzzlePosition, directions direction);
+	void GenerateBulletPool(int poolSize);
 	void Shoot(vector2 shooterPosition, int offset, directions direction);
 	bool UseBulletPool(vector2 muzzlePosition);
 	void Cooldown(int cooldownFactor);

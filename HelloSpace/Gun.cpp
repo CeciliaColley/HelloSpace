@@ -6,19 +6,15 @@ Gun::Gun()
 	cooldownTimer = cooldownThreshold;
 	shootCount = 0;
 	canShoot = true;
-	bulletPoolSize = 10;
-	for (int i = 0; i < 10; i++)
-	{
-		Bullet* bullet = new Bullet();
-		bullet->SetActiveState(false);
-		bulletPool.push_back(bullet);
-	}
+	GenerateBulletPool(10);
 }
 Gun::~Gun()
 {
-	for (Bullet* bullet : bulletPool)
+	// //Bullets in the bullet pool are destroyed in the guns deconstructor
+	for (auto it = bulletPool.begin(); it != bulletPool.end();)
 	{
-		delete bullet;
+		delete* it; // Deletes the Bullet object the iterator points to
+		it = bulletPool.erase(it); // Erases the pointer from the vector and updates the iterator
 	}
 }
 
@@ -56,6 +52,17 @@ Gun::~Gun()
 void Gun::GenerateBullet(vector2 muzzlePosition, directions direction)
 {
 	Bullet* bullet = new Bullet(muzzlePosition, direction);
+	bullet->FlagForCleanup();
+}
+void Gun::GenerateBulletPool(int poolSize)
+{
+	//Bullets in the bullet pool are destroyed in the guns deconstructor and don't need to be flagged for cleanup
+	for (int i = 0; i < poolSize; i++)
+	{
+		Bullet* bullet = new Bullet();
+		bullet->SetActiveState(false);
+		bulletPool.push_back(bullet);
+	}
 }
 void Gun::Shoot(vector2 shooterPosition, int offset, directions direction)
 {

@@ -46,11 +46,14 @@ void Spaceship::Move()
 {
 	controlledMovement.ControlMovement();
 	vector2 newPosition = GetPosition() + controlledMovement.GetMovementVector();
-	try
+	if (!(newPosition.x <= 0 || newPosition.y <= 0))
 	{
 		SetPosition(newPosition);
 	}
-	catch (const invalid_argument& e) {}
+	else
+	{
+		SetActiveState(false);
+	}
 
 	// TODO: CHANGE ABOVE LINE TO THE FOLLOWING, TO KEEP THE SPACESHIP IN THE CONFINES OF THE SCREEN.
 

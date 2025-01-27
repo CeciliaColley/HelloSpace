@@ -129,6 +129,7 @@
     <ClInclude Include="Asteroid.h" />
     <ClInclude Include="AwesomeLibrary.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="GarbageCollector.h" />
     <ClInclude Include="ControlledMovement.h" />
     <ClInclude Include="Directions.h" />
     <ClInclude Include="GameObject.h" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="ControlledMovement.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GarbageCollector.cpp" />
     <ClCompile Include="Gun.cpp" />
     <ClCompile Include="HelloSpace.cpp" />
     <ClCompile Include="Movement.cpp" />
