@@ -90,7 +90,7 @@ bool Gun::UseBulletPool(vector2 muzzlePosition)
 	}
 	return false;
 }
-void Gun::Cooldown(int cooldownFactor)
+void Gun::Cooldown(float cooldownFactor)
 {
 	if (cooldownTimer < cooldownThreshold)
 	{

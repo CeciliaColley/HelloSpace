@@ -4,7 +4,7 @@ PredefinedMovement::PredefinedMovement() : Movement() { }
 PredefinedMovement::~PredefinedMovement() = default;
 void PredefinedMovement::DefineMovement(directions direction)
 {
-    if (IsDirectionAllowed(direction))
+    if (DirectionIsAllowed(direction))
     {
         SetMovementVector(DirectionToVector(direction));
     }

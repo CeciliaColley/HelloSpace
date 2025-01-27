@@ -12,5 +12,5 @@ public:
 	~Bullet();
 
 	void Draw() override;
-	void Move() override;
+	void Move(float loopIncrease) override;
 };

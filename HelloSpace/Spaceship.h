@@ -25,5 +25,5 @@ public:
 	/// <para>- Does NOT visually move the spaceship; it only updates the position vector.</para>
 	/// <para>- To visually reflect movement on screen, hide the spaceship, then redraw the spaceship at its new position.</para>
 	/// </summary>
-	void Move() override;
+	void Move(float loopIncrease) override;
 };

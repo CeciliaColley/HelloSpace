@@ -12,6 +12,7 @@ Spaceship::Spaceship() : GameObject()
 	controlledMovement.SetDirectionAllowed(UP, false);
 	controlledMovement.SetDirectionAllowed(DOWN, false);
 	gun = new Gun();
+	controlledMovement.SetSpeed(0.5);
 }
 Spaceship::~Spaceship()
 {
@@ -42,8 +43,10 @@ void Spaceship::Draw()
 	goToCoordinates(x, (y + 2));
 	wcout << L"▲╝ ╚▲";
 }
-void Spaceship::Move()
+void Spaceship::Move(float loopIncrease)
 {
+	if (!controlledMovement.MovementDelayPerformed(loopIncrease)) { return; }
+
 	controlledMovement.ControlMovement();
 	vector2 newPosition = GetPosition() + controlledMovement.GetMovementVector();
 	if (!(newPosition.x <= 0 || newPosition.y <= 0))

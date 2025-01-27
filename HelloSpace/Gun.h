@@ -7,8 +7,8 @@
 class Gun
 {
 private:
-	int cooldownTimer;
-	int cooldownThreshold;
+	float cooldownTimer;
+	float cooldownThreshold;
 	int shootCount;
 	bool canShoot;
 	vector<Bullet*> bulletPool;
@@ -30,6 +30,6 @@ public:
 	void GenerateBulletPool(int poolSize);
 	void Shoot(vector2 shooterPosition, int offset, directions direction);
 	bool UseBulletPool(vector2 muzzlePosition);
-	void Cooldown(int cooldownFactor);
+	void Cooldown(float cooldownFactor);
 	vector2 GetMuzzlePosition(vector2 shooterPosition, int offset);
 };

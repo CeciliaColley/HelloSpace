@@ -36,7 +36,7 @@ directions ControlledMovement::InputToDirection()
 void ControlledMovement::ControlMovement()
 {
 	directions inputDirection = InputToDirection();
-	if (IsDirectionAllowed(inputDirection))
+	if (DirectionIsAllowed(inputDirection))
 	{
 		vector2 inputVector = DirectionToVector(inputDirection);
 		SetMovementVector(inputVector);

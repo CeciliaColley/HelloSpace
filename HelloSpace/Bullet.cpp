@@ -22,8 +22,9 @@ void Bullet::Draw()
 	goToCoordinates(x, y);
 	wcout << L"⌂";
 }
-void Bullet::Move()
+void Bullet::Move(float loopIncrease)
 {
+	if (!predefinedMovement.MovementDelayPerformed(loopIncrease)) { return; }
 	vector2 newPosition = GetPosition() + predefinedMovement.GetMovementVector();
 	if (!(newPosition.x <= 0 || newPosition.y <= 0))
 	{

@@ -5,6 +5,7 @@
 #include "vector2.h"
 #include <crtdbg.h>
 #include "GarbageCollector.h"
+#include "Asteroid.h"
 
 using namespace std;
 
@@ -19,13 +20,13 @@ void DrawAllActiveGameObjects()
 	}
 }
 
-void MoveAllActiveGameObjects()
+void MoveAllActiveGameObjects(float loopIncrease)
 {
 	for (GameObject* gameObject : GameObject::GetAllGameObjects())
 	{
 		if (gameObject->IsActive())
 		{
-			gameObject->Move();
+			gameObject->Move(loopIncrease);
 		}
 	}
 }
@@ -37,14 +38,14 @@ int main()
 	GarbageCollector garbageCollector;
 	Spaceship spaceship;
 	spaceship.SetPosition(vector2(10, 10));
+	Asteroid asteroid;
 
-	int frames = 1000000000;
-	int frame = 0;
-	int loopIncrease = 1;
+	bool stillPlaying = true;
+	float loopIncrease = 1;
 
-	while (frame < frames)
+	while (stillPlaying)
 	{
-		MoveAllActiveGameObjects();
+		MoveAllActiveGameObjects(loopIncrease);
 
 		if (GetKeyState(0x20) < 0)
 		{
@@ -54,16 +55,14 @@ int main()
 		system("cls");
 		DrawAllActiveGameObjects();
 		
-		frame++;
 		Sleep(loopIncrease);
 		spaceship.GetGun()->Cooldown(loopIncrease);
 		
 		garbageCollector.CollectInactiveGameObjects();
 
-		if (GetKeyState('X') < 0)
+		if (GetKeyState(KEY_ESC) < 0)
 		{
-
-			break;
+			stillPlaying = false;
 		}
 	}
 }

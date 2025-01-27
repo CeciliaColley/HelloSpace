@@ -13,6 +13,7 @@ private:
 	vector2 size;
 	bool isActive;
 	bool isGarbage;
+	
 public:
 	GameObject();
 	GameObject(vector2 position);
@@ -39,5 +40,5 @@ public:
 	
 	// Virtual Functions
 	virtual void Draw() = 0;
-	virtual void Move() = 0;
+	virtual void Move(float loopIncrease) = 0;
 };
